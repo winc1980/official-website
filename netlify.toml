@@ -3,6 +3,7 @@
   publish= ".next"
 [build.environment]
   SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_CMS_API_KEY,NEXT_PUBLIC_CMS_DOMAIN,NEXT_PUBLIC_TURNSTILE_SITE_KEY,MICROCMS_API_KEY,MICROCMS_SERVICE_DOMAIN"
+  NODE_VERSION = "24.22.1"
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 [[plugins]]
