@@ -11,7 +11,7 @@ type SnsLink = {
 const SNS_LINKS: SnsLink[] = [
   {
     href: "https://x.com/WINC_waseda",
-    label: "公式X - @WINC_waseda",
+    label: "公式X",
     renderIcon: (size) => (
       <Image
         src="/external-assets/x-logo/logo-black.png"
@@ -24,12 +24,12 @@ const SNS_LINKS: SnsLink[] = [
   },
   {
     href: "https://www.instagram.com/waseda_winc/",
-    label: "公式Instagram - waseda_winc",
+    label: "公式Instagram",
     renderIcon: (size) => <Instagram size={size} />,
   },
   {
     href: "https://line.me/R/ti/p/@954vvdyo",
-    label: "公式LINE - @954vvdyo",
+    label: "公式LINE",
     renderIcon: (size) => (
       <Image
         src="/external-assets/line-logo/line-icon.png"
