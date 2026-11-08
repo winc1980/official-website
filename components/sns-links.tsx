@@ -8,7 +8,7 @@ type SnsLink = {
   renderIcon: (size: number) => React.ReactNode;
 };
 
-const SNS_LINKS: SnsLink[] = [
+export const SNS_LINKS: SnsLink[] = [
   {
     href: "https://x.com/WINC_waseda",
     label: "公式X",

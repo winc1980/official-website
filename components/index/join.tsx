@@ -93,7 +93,7 @@ export default function Join({ heading, body }: { heading: string; body: string 
         </div>
         */}
         <div className="p-2 flex flex-col sm:flex-row gap-4 mt-12">
-          <Link href="https://secure.register.winc.ne.jp/">
+          <Link href="/join">
             <PrimaryButton>
               新入生向け情報
               <ArrowRight />
