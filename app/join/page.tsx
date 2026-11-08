@@ -40,7 +40,7 @@ const BANK_ACCOUNT = [
 const FAQS = [
   {
     q: "新歓に参加しなくても体験入会と本入会はできますか？",
-    a: "できます。体験入会はXやInstagramのDMまたはお問い合わせから受け付けています。",
+    a: "できます。体験入会は公式LINEまたはお問い合わせから受け付けています。",
   },
   {
     q: "会費はどのようなことに使われますか？",
@@ -48,8 +48,7 @@ const FAQS = [
   },
 ];
 
-const xLink = SNS_LINKS.find((l) => l.label === "公式X")!;
-const instagramLink = SNS_LINKS.find((l) => l.label === "公式Instagram")!;
+const lineLink = SNS_LINKS.find((l) => l.label === "公式LINE")!;
 
 const GUTTER =
   "grow-[1] border-x border-x-(--pattern-fg) bg-[image:repeating-linear-gradient(315deg,_var(--pattern-fg)_0,_var(--pattern-fg)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed max-lg:hidden [--pattern-fg:var(--foreground)]/10";
@@ -107,29 +106,21 @@ export default function Join() {
             <Block titleEn="trial" title="体験入会希望の方">
               <p>
                 WINCの
-                <Link href={xLink.href} target="_blank" rel="noopener noreferrer" className={textLink}>
-                  公式X
+                <Link href={lineLink.href} target="_blank" rel="noopener noreferrer" className={textLink}>
+                  公式LINE
                 </Link>
-                、または
-                <Link href={instagramLink.href} target="_blank" rel="noopener noreferrer" className={textLink}>
-                  公式Instagram
-                </Link>
-                に、「体験したい」という旨のメッセージをDMで送ってください。
+                を友だち追加し、「体験したい」という旨のメッセージを送ってください。
               </p>
-              <div className="flex gap-4">
-                {[xLink, instagramLink].map(({ href, label, renderIcon }) => (
-                  <Link
-                    key={href}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 border-2 border-foreground px-4 py-2 font-semibold hover:bg-foreground hover:text-background transition-colors"
-                  >
-                    {renderIcon(20)}
-                    {label}
-                  </Link>
-                ))}
-              </div>
+              <Link
+                href={lineLink.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex w-fit items-center gap-2 border-2 border-foreground px-4 py-2 font-semibold hover:bg-foreground hover:text-background transition-colors"
+              >
+                {lineLink.renderIcon(20)}
+                公式LINEを友だち追加
+                <ArrowRight size={18} />
+              </Link>
             </Block>
 
             <Block titleEn="registration" title="入会希望の方">
