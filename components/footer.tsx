@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Instagram } from "lucide-react";
+import { SnsLinks } from "./sns-links";
 
 export default function Footer() {
   return (
@@ -50,20 +50,7 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-        <div className="flex max-w-7xl gap-8">
-          <Link href="https://x.com/WINC_waseda">
-            <Image
-              src="/external-assets/x-logo/logo-black.png"
-              width={31}
-              height={31}
-              alt="公式X - @WINC_waseda"
-              className="p-0.5"
-            />
-          </Link>
-          <Link href="https://www.instagram.com/waseda_winc/">
-            <Instagram size={30} />
-          </Link>
-        </div>
+        <SnsLinks iconSize={30} className="flex max-w-7xl gap-8 items-center" />
       </section>
       <section className="flex justify-between items-center w-full max-w-7xl text-end py-16 border-t border-gray-400">
         <p className="text-left text-sm text-gray-400 px-3 font-mono">

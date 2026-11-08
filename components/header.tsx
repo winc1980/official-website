@@ -2,10 +2,17 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { ArrowRight, Menu, X, Instagram } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useScrollStatus } from "@/hooks/scroll-status";
 import { PrimaryButton } from "./buttons/PrimaryButton";
+import { SnsLinks } from "./sns-links";
+
+const DESKTOP_NAV_ITEMS = [
+  { href: "/blog", label: "ブログ" },
+  { href: "/projects", label: "プロジェクト・制作実績" },
+  { href: "/contacts", label: "お問い合わせ" },
+];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +20,7 @@ export default function Header() {
   const onNavigate = () => setIsOpen(false);
 
   return (
-    <div>
+    <>
       <div
         id="mobile-menu-bg"
         className={`${
@@ -77,27 +84,11 @@ export default function Header() {
               </li>
             </ul>
             <footer className="flex flex-col text-zinc-500 text-xs px-8 my-8 gap-8">
-              <div className="flex justify-center flex-wrap max-w-7xl gap-6">
-                <Link
-                  href="https://x.com/WINC_waseda"
-                  className="flex items-center justify-center min-w-[44px] min-h-[44px] p-2"
-                  aria-label="公式X - @WINC_waseda"
-                >
-                  <Image
-                    src="/external-assets/x-logo/logo-black.png"
-                    width={28}
-                    height={28}
-                    alt=""
-                  />
-                </Link>
-                <Link
-                  href="https://x.com/waseda_winc"
-                  className="flex items-center justify-center min-w-[44px] min-h-[44px] p-2"
-                  aria-label="公式Instagram - waseda_winc"
-                >
-                  <Instagram size={28} />
-                </Link>
-              </div>
+              <SnsLinks
+                iconSize={28}
+                className="flex justify-center flex-wrap max-w-7xl gap-6"
+                linkClassName="flex items-center justify-center min-w-[44px] min-h-[44px] p-2"
+              />
               <section className="flex flex-wrap gap-3">
                 <Link onNavigate={onNavigate} href="">
                   プライバシーポリシー
@@ -148,47 +139,16 @@ export default function Header() {
           )}
           <div className="hidden lg:block">
             <div className="flex gap-6 items-center uppercase font-bold">
-              <div
-                className="hover:border-b-2 border-foreground transition-all"
-              >
-                <Link href="/blog">
-                  <div>ブログ</div>
+              {DESKTOP_NAV_ITEMS.map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="hover:border-b-2 border-foreground transition-all"
+                >
+                  {label}
                 </Link>
-              </div>
-              <div
-                className="hover:border-b-2 border-foreground transition-all"
-              >
-                <Link href="/projects">
-                  <div>プロジェクト・制作実績</div>
-                </Link>
-              </div>
-              <div
-                className="hover:border-b-2 border-foreground transition-all"
-              >
-                <Link href="/contacts">
-                  <div>お問い合わせ</div>
-                </Link>
-              </div>
-              <div>
-                <Link href="https://x.com/WINC_waseda">
-                  <div>
-                    <Image
-                      src="/external-assets/x-logo/logo-black.png"
-                      width={24}
-                      height={24}
-                      alt="公式X - @WINC_waseda"
-                      className="p-0.5"
-                    />
-                  </div>
-                </Link>
-              </div>
-              <div>
-                <Link href="https://www.instagram.com/waseda_winc/">
-                  <div>
-                    <Instagram size={24} />
-                  </div>
-                </Link>
-              </div>
+              ))}
+              <SnsLinks iconSize={24} className="flex gap-6 items-center" />
               <div className="min-w-[166px]">
                 <Link href="https://secure.register.winc.ne.jp/">
                   <PrimaryButton>
@@ -201,6 +161,6 @@ export default function Header() {
           </div>
         </div>
       </header>
-    </div>
+    </>
   );
 }
