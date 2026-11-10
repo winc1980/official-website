@@ -26,7 +26,7 @@ export default function PostCard({ post }: { post: BlogPost }) {
             </div>
           )}
         </div>
-        <h2 className="text-xl font-semibold group-hover:text-secondary transition-colors">
+        <h2 className="text-xl font-bold group-hover:text-secondary transition-colors">
           {post.title}
         </h2>
         {post.excerpt && (

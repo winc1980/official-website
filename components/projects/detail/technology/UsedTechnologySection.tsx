@@ -9,7 +9,7 @@ interface UsedTechnologySectionProps {
 export default function UsedTechnologySection({ project }: UsedTechnologySectionProps) {
     return (
       <div className="my-4">
-        <h2 className="font-extralight text-2xl palt lg:divide-effect">
+        <h2 className="font-bold text-2xl palt lg:divide-effect">
           <p className="font-mono text-sm opacity-60">Technologies</p>
           使用技術
         </h2>

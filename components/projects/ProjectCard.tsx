@@ -47,7 +47,7 @@ export const ProjectCard = ({ project, className }: { project: ProjectType, clas
               {project.completeDate != null ? "Released" : "In development"}
               {project.technologies[0]?` / ${typeof project.technologies[0] === "string" ? project.technologies[0] : (project.technologies[0] as { name: string }).name}`:''}
             </span>
-            <h3 className="text-3xl font-light">
+            <h3 className="text-3xl font-bold">
               {project.title}
             </h3>
             <p className="text-md py-4 line-clamp-3">
