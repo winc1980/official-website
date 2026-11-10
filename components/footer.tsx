@@ -48,6 +48,9 @@ export default function Footer() {
             <Link href="/contacts" className="p-2 text-sm font-semibold">
               お問い合わせ
             </Link>
+            <Link href="/join" className="p-2 text-sm font-semibold">
+              入会案内
+            </Link>
           </div>
         </div>
         <SnsLinks iconSize={30} className="flex max-w-7xl gap-8 items-center" />

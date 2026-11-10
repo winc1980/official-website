@@ -82,6 +82,15 @@ export default function Header() {
                   お問い合わせ
                 </Link>
               </li>
+              <li>
+                <Link
+                  onNavigate={onNavigate}
+                  href="/join"
+                  className="flex items-center min-h-[44px] py-2"
+                >
+                  入会案内
+                </Link>
+              </li>
             </ul>
             <footer className="flex flex-col text-zinc-500 text-xs px-8 my-8 gap-8">
               <SnsLinks
@@ -150,7 +159,7 @@ export default function Header() {
               ))}
               <SnsLinks iconSize={24} className="flex gap-6 items-center" />
               <div className="min-w-[166px]">
-                <Link href="https://secure.register.winc.ne.jp/">
+                <Link href="/join">
                   <PrimaryButton>
                     入会はこちら
                     <ArrowRight />
