@@ -3,12 +3,12 @@ import Link from "next/link";
 import { ArrowRight, ChevronDown, TriangleAlert } from "lucide-react";
 import PageHeader from "@/components/page-header";
 import { PrimaryButton } from "@/components/buttons/PrimaryButton";
-import { SNS_LINKS } from "@/components/sns-links";
+import { LINE_LINK } from "@/components/sns-links";
 
 export const metadata: Metadata = {
   title: "入会案内",
   description:
-    "早稲田大学公認ITサークルWINCの入会案内です。体験入会の申し込み方法、会則、年会費の振込先、入会申込書の提出方法をご案内します。",
+    "早稲田大学公認ITサークルWINCの入会案内です。体験の申し込み方法、会則、年会費の振込先、入会申込書の提出方法をご案内します。",
   alternates: {
     canonical: "/join",
   },
@@ -39,16 +39,16 @@ const BANK_ACCOUNT = [
 
 const FAQS = [
   {
-    q: "新歓に参加しなくても体験入会と本入会はできますか？",
-    a: "できます。体験入会は公式LINEまたはお問い合わせから受け付けています。",
+    q: "新歓に参加しなくても、体験、入会はできますか？",
+    a: "できます。公式LINEまたはお問い合わせから随時受け付けています。",
   },
   {
     q: "会費はどのようなことに使われますか？",
-    a: "部門のメンバー共通で使用する教材やレンタル費用、部門で必要な備品、サーバー代、新歓、会議室代などに使われます。",
+    a: "サークルで必要な備品代、サーバー代、会議室代などに使われます。",
   },
 ];
 
-const lineLink = SNS_LINKS.find((l) => l.label === "公式LINE")!;
+const lineLink = LINE_LINK;
 
 const GUTTER =
   "grow-[1] border-x border-x-(--pattern-fg) bg-[image:repeating-linear-gradient(315deg,_var(--pattern-fg)_0,_var(--pattern-fg)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed max-lg:hidden [--pattern-fg:var(--foreground)]/10";
@@ -57,11 +57,13 @@ function Block({
   id,
   titleEn,
   title,
+  num,
   children,
 }: {
   id?: string;
   titleEn: string;
-  title: React.ReactNode;
+  title: string;
+  num?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -69,23 +71,27 @@ function Block({
       id={id}
       className="scroll-mt-24 border-b border-foreground/10 px-8 py-12 lg:py-16"
     >
-      <h2 className="text-2xl lg:text-4xl font-light mb-8">
-        <span className="block font-mono text-sm opacity-60 px-1 uppercase">
-          {titleEn}
-        </span>
-        {title}
-      </h2>
+      {num ? (
+        // 英語ラベルと数字を同じ列に置き、ラベルの中央を数字の中央にそろえる
+        <h2 className="grid grid-cols-[auto_1fr] items-baseline gap-x-4 text-2xl lg:text-4xl font-bold mb-8">
+          <span className="col-start-1 text-center font-mono font-normal text-sm opacity-60 uppercase">
+            {titleEn}
+          </span>
+          <span className="col-start-1 row-start-2 text-center font-mono text-foreground/30">
+            {num}
+          </span>
+          <span className="col-start-2 row-start-2">{title}</span>
+        </h2>
+      ) : (
+        <h2 className="text-2xl lg:text-4xl font-bold mb-8">
+          <span className="block font-mono font-normal text-sm opacity-60 px-1 uppercase">
+            {titleEn}
+          </span>
+          {title}
+        </h2>
+      )}
       <div className="flex flex-col gap-6 leading-8">{children}</div>
     </section>
-  );
-}
-
-function StepTitle({ num, label }: { num: string; label: string }) {
-  return (
-    <span className="flex items-baseline gap-4">
-      <span className="font-mono font-bold text-foreground/30">{num}</span>
-      {label}
-    </span>
   );
 }
 
@@ -97,19 +103,19 @@ export default function Join() {
       <PageHeader
         titleJa="入会案内"
         titleEn="join us"
-        desc="Since 1967 / International Students Welcome / Recognized by Waseda University"
+        desc="体験、入会はこちらから"
       />
       <section className="w-full flex flex-col items-center bg-background">
         <div className="w-full max-w-[1440px] flex flex-row items-stretch relative">
           <div className={GUTTER}></div>
           <div className="w-full max-w-7xl">
-            <Block titleEn="trial" title="体験入会希望の方">
+            <Block titleEn="" title="体験希望の方">
               <p>
                 WINCの
                 <Link href={lineLink.href} target="_blank" rel="noopener noreferrer" className={textLink}>
                   公式LINE
                 </Link>
-                を友だち追加し、「体験したい」という旨のメッセージを送ってください。
+                を友だち追加し、「見学申し込み」を送ってください。
               </p>
               <Link
                 href={lineLink.href}
@@ -123,7 +129,7 @@ export default function Join() {
               </Link>
             </Block>
 
-            <Block titleEn="registration" title="入会希望の方">
+            <Block titleEn="" title="入会希望の方">
               <p>以下の手順で入会手続きを行ってください。</p>
               <ol className="flex flex-col border-t border-foreground/10">
                 {STEPS.map(({ id, num, label }) => (
@@ -142,7 +148,7 @@ export default function Join() {
               </ol>
             </Block>
 
-            <Block id="rules" titleEn="step 01" title={<StepTitle num="01" label="会則の確認" />}>
+            <Block id="rules" titleEn="step" num="01" title="会則の確認">
               <p>フォームを提出する前に会則を確認してください。</p>
               <details className="group border-2 border-foreground">
                 <summary className="flex items-center justify-between gap-2 p-4 font-semibold cursor-pointer list-none [&::-webkit-details-marker]:hidden">
@@ -160,12 +166,12 @@ export default function Join() {
               </details>
             </Block>
 
-            <Block id="account" titleEn="step 02" title={<StepTitle num="02" label="振込先の確認" />}>
+            <Block id="account" titleEn="step" num="02" title="振込先の確認">
               <table className="w-full border-collapse text-sm lg:text-base">
                 <tbody>
                   {BANK_ACCOUNT.map(({ label, value }) => (
                     <tr key={label} className="border-y border-foreground/10 even:bg-foreground/[0.03]">
-                      <th scope="row" className="w-1/3 py-3 px-4 text-left font-semibold whitespace-nowrap">
+                      <th scope="row" className="w-1/3 py-3 px-4 text-left font-bold whitespace-nowrap">
                         {label}
                       </th>
                       <td className="py-3 px-4 font-mono break-all">{value}</td>
@@ -175,9 +181,9 @@ export default function Join() {
               </table>
             </Block>
 
-            <Block id="payment" titleEn="step 03" title={<StepTitle num="03" label="振り込み" />}>
+            <Block id="payment" titleEn="step" num="03" title="振り込み">
               <dl className="flex items-baseline gap-6 border-y border-foreground/10 py-4 px-4">
-                <dt className="font-semibold">年会費</dt>
+                <dt className="font-bold">年会費</dt>
                 <dd className="text-3xl font-light font-mono">
                   5,000<span className="text-base ml-1">円</span>
                 </dd>
@@ -193,7 +199,7 @@ export default function Join() {
               </div>
             </Block>
 
-            <Block id="application" titleEn="step 04" title={<StepTitle num="04" label="入会申込書の提出" />}>
+            <Block id="application" titleEn="step" num="04" title="入会申込書の提出">
               <p>
                 領収書の画像が用意できたら、以下の振り込み確認フォームを提出してください。このフォームを提出したら、入会手続きは完了です。会費を手渡しされた方は、画像を用意する必要はありません。
               </p>
@@ -205,7 +211,7 @@ export default function Join() {
               </Link>
             </Block>
 
-            <Block id="faq" titleEn="faq" title={<StepTitle num="★" label="よくあるご質問" />}>
+            <Block id="faq" titleEn="faq" num="★" title="よくあるご質問">
               <div className="flex flex-col border-t border-foreground/10">
                 {FAQS.map(({ q, a }) => (
                   <details key={q} className="group border-b border-foreground/10">

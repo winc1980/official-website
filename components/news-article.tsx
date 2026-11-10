@@ -61,7 +61,7 @@ export default function NewsArticle({
       className="bg-foreground/10 mb-8 divide-effect w-full max-w-7xl"
     >
       <div className="bg-background rounded-2xl p-4 m-2 gsap-trigger">
-        <h3 className="text-3xl font-light w-full divide-effect gsap-lines">
+        <h3 className="text-3xl font-bold w-full divide-effect gsap-lines">
           <p className="font-mono text-sm opacity-60 px-1">
             {newsContent.createdAt}
           </p>

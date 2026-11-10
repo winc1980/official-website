@@ -16,9 +16,9 @@ export default async function PageHeader({
         <div className="w-full max-w-7xl">
           <div className="flex flex-col justify-center">
             <section className="border-b border-foreground/10 w-full max-w-7xl py-8">
-              <h2 className="text-3xl lg:text-5xl font-light w-full divide-effect">
+              <h2 className="text-3xl lg:text-5xl font-bold w-full divide-effect">
                 <div className="pl-8">
-                  <div className="font-mono text-sm opacity-60 px-1">{titleEn}</div>
+                  <div className="font-mono font-normal text-sm opacity-60 px-1">{titleEn}</div>
                   {titleJa}
                 </div>
               </h2>

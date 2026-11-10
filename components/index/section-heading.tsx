@@ -77,7 +77,7 @@ export default function SectionHeading({
 
   return (
     <div className="divide-effect">
-      <h2 ref={scope} className="text-4xl lg:text-5xl font-light w-full overflow-y-hidden">
+      <h2 ref={scope} className="text-4xl lg:text-5xl font-bold w-full overflow-y-hidden">
         <p className="font-extrabold text-sm px-1 section-heading-line">{titleJa}</p>
         <span className="section-heading-typing overflow-hidden border-r-4 uppercase font-bold"></span>
       </h2>

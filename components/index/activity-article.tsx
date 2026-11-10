@@ -71,7 +71,7 @@ export default function ActivityArticle({
           width={384}
           height={384}
         />
-        <h3 className="text-3xl pt-8 font-light w-full gsap-lines">
+        <h3 className="text-3xl pt-8 font-bold w-full gsap-lines">
           <p className="font-mono text-sm opacity-60">{activity.title_en}</p>
           {activity.title}
         </h3>

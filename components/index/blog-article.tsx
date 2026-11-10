@@ -60,7 +60,7 @@ export default function BlogArticle({ post }: { post: BlogPost }) {
         className="bg-foreground/10 mb-8 divide-effect w-full max-w-7xl"
       >
         <div className="bg-background rounded-2xl p-4 m-2 gsap-trigger hover:bg-foreground/80 hover:backdrop-blur hover:text-background transition-all duration-300">
-          <h3 className="text-3xl font-light w-full divide-effect gsap-lines">
+          <h3 className="text-3xl font-bold w-full divide-effect gsap-lines">
             <div className="flex items-center gap-3 px-1">
               <p className="font-mono text-sm opacity-60">
                 {formatDate(post.date)}

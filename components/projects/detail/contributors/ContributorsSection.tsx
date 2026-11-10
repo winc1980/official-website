@@ -10,7 +10,7 @@ export default function ContributorsSection({
 }: ContributorsSectionProps) {
   return (
     <div className="my-4">
-      <h2 className="font-extralight text-2xl palt lg:divide-effect">
+      <h2 className="font-bold text-2xl palt lg:divide-effect">
         <p className="font-mono text-sm opacity-60">Contributors</p>
         貢献者
       </h2>
