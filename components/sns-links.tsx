@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Instagram } from "lucide-react";
 
 type SnsLink = {
   href: string;
@@ -22,24 +21,21 @@ export const SNS_LINKS: SnsLink[] = [
       />
     ),
   },
-  {
-    href: "https://www.instagram.com/waseda_winc/",
-    label: "公式Instagram",
-    renderIcon: (size) => <Instagram size={size} />,
-  },
-  {
-    href: "https://line.me/R/ti/p/@954vvdyo",
-    label: "公式LINE",
-    renderIcon: (size) => (
-      <Image
-        src="/external-assets/line-logo/line-icon.png"
-        width={size}
-        height={size}
-        alt=""
-      />
-    ),
-  },
 ];
+
+// LINEは新歓窓口のため、ヘッダー・フッターには出さず入会案内ページ(/join)でのみ使う
+export const LINE_LINK: SnsLink = {
+  href: "https://line.me/R/ti/p/@954vvdyo",
+  label: "公式LINE",
+  renderIcon: (size) => (
+    <Image
+      src="/external-assets/line-logo/line-icon.png"
+      width={size}
+      height={size}
+      alt=""
+    />
+  ),
+};
 
 type Props = {
   iconSize: number;

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, ChevronDown, TriangleAlert } from "lucide-react";
 import PageHeader from "@/components/page-header";
 import { PrimaryButton } from "@/components/buttons/PrimaryButton";
-import { SNS_LINKS } from "@/components/sns-links";
+import { LINE_LINK } from "@/components/sns-links";
 
 export const metadata: Metadata = {
   title: "入会案内",
@@ -48,7 +48,7 @@ const FAQS = [
   },
 ];
 
-const lineLink = SNS_LINKS.find((l) => l.label === "公式LINE")!;
+const lineLink = LINE_LINK;
 
 const GUTTER =
   "grow-[1] border-x border-x-(--pattern-fg) bg-[image:repeating-linear-gradient(315deg,_var(--pattern-fg)_0,_var(--pattern-fg)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed max-lg:hidden [--pattern-fg:var(--foreground)]/10";
