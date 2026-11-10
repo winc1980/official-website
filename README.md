@@ -2,6 +2,8 @@
 
 WINCチームのオフィシャルウェブサイト。Next.jsで構築されたモダンなチームポータルです。
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e8b858c8-7377-4591-a378-b06fbcc4961d/deploy-status)](https://app.netlify.com/projects/winc/deploys)
+
 ## 概要
 
 このプロジェクトは、チームメンバー情報、ブログ、プロジェクトポートフォリオ、ニュース、問い合わせ機能を提供する統合ウェブアプリケーションです。
