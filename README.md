@@ -8,7 +8,7 @@ WINCチームのオフィシャルウェブサイト。Next.jsで構築された
 
 ## 主な特徴
 
-- **マルチプルCMS連携**: Notion と microCMS からのデータ取得に対応
+- **コンテンツ連携**: ブログはnoteのRSS、ニュースやメンバー情報などはmicroCMSから取得
 - **お問い合わせ機能**: Turnstile による CAPTCHA 検証付きのフォーム送信（Resend で Email 配信）
 - **Instagram 連携**: Instagram API との同期機能
 - **Discord 通知**: お問い合わせ時に Discord に通知
@@ -22,7 +22,7 @@ WINCチームのオフィシャルウェブサイト。Next.jsで構築された
 - **言語**: TypeScript
 - **スタイリング**: Tailwind CSS
 - **フォーム処理**: React Hook Form + Yup
-- **CMS**: Notion API, microCMS SDK
+- **コンテンツ取得**: note RSS（rss-parser）, microCMS SDK
 - **外部サービス**:
   - Resend (メール配信)
   - Cloudflare Turnstile (CAPTCHA)
@@ -48,7 +48,7 @@ WINCチームのオフィシャルウェブサイト。Next.jsで構築された
 ├── actions/                       # Server Actions
 │   └── contact.ts                 # お問い合わせ送信処理
 ├── lib/                           # ユーティリティ関数
-│   ├── notion/                    # Notion API ラッパー
+│   ├── blog/                      # note RSS の取得・ブログ共通処理
 │   ├── discord.ts                 # Discord Webhook
 │   ├── resend.ts                  # Resend メール設定
 │   └── google-apps-script.ts      # GAS 連携
@@ -68,9 +68,8 @@ WINCチームのオフィシャルウェブサイト。Next.jsで構築された
 NEXT_PUBLIC_CMS_API_KEY=your_microcms_api_key
 NEXT_PUBLIC_CMS_DOMAIN=your_microcms_domain
 
-# Notion
-NOTION_API_SECRET=your_notion_secret
-NOTION_DATABASE_ID=your_notion_database_id
+# ブログ（noteマガジンのRSS）
+NOTE_MAGAZINE_RSS_URL=https://note.com/your_account/m/your_magazine_id/rss
 
 # メール配信
 RESEND_API_KEY=your_resend_api_key
@@ -143,10 +142,12 @@ pnpm start
 
 ### ブログ機能
 
-- **CMS**: Notion
-- **ファイル**: [lib/notion/](lib/notion/)
-- Notion ブロックの動的レンダリング対応
-- ブックマーク、コードブロック、見出しなど複数ブロックタイプをサポート
+- **データソース**: `NOTE_MAGAZINE_RSS_URL`で指定したnoteマガジンのRSS
+- **ファイル**: [lib/blog/](lib/blog/)
+- トップページに最新3件、`/blog`にRSS内の記事を公開日の降順で表示
+- 記事をクリックするとnoteの記事ページへ移動
+- RSS取得結果は5分間キャッシュ。表示件数はnoteがRSSで配信する範囲に限定
+- GitHub Actionsでは同名のリポジトリシークレット`NOTE_MAGAZINE_RSS_URL`を設定
 
 ### Instagram 連携
 

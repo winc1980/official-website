@@ -1,6 +1,6 @@
 import PageHeader from "@/components/page-header";
 import PostCard from "@/components/blog/PostCard";
-import { getAllPosts } from "@/lib/notion";
+import { getAllPosts } from "@/lib/blog/rss";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

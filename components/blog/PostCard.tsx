@@ -1,11 +1,11 @@
 import Link from "next/link";
-import type { BlogPost } from "@/lib/notion/types";
-import { formatDate, getTagColorClass } from "@/lib/notion/utils";
+import type { BlogPost } from "@/lib/blog/types";
+import { formatDate, getTagColorClass } from "@/lib/blog/utils";
 
 export default function PostCard({ post }: { post: BlogPost }) {
   return (
     <Link
-      href={`/blog/${post.slug}`}
+      href={post.url}
       className="group block border-b border-foreground/10 py-6 px-8 hover:bg-muted/30 transition-colors"
     >
       <article>

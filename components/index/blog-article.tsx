@@ -1,6 +1,6 @@
 "use client";
-import type { BlogPost } from "@/lib/notion/types";
-import { formatDate, getTagColorClass } from "@/lib/notion/utils";
+import type { BlogPost } from "@/lib/blog/types";
+import { formatDate, getTagColorClass } from "@/lib/blog/utils";
 import Link from "next/link";
 import { useRef } from "react";
 import gsap from "gsap";
@@ -54,7 +54,7 @@ export default function BlogArticle({ post }: { post: BlogPost }) {
   );
 
   return (
-    <Link href={`/blog/${post.slug}`} className="w-full">
+    <Link href={post.url} className="w-full">
       <article
         ref={scope}
         className="bg-foreground/10 mb-8 divide-effect w-full max-w-7xl"

@@ -1,4 +1,4 @@
-import { getAllPosts } from "@/lib/notion/blog";
+import { getAllPosts } from "@/lib/blog/rss";
 import BlogArticle from "@/components/index/blog-article";
 import { Plus } from "lucide-react";
 import Link from "next/link";
