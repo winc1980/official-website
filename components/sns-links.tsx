@@ -9,7 +9,7 @@ type SnsLink = {
 
 export const SNS_LINKS: SnsLink[] = [
   {
-    href: "https://x.com/WINC_waseda",
+    href: "https://x.com/waseda_WINC",
     label: "公式X",
     renderIcon: (size) => (
       <Image
