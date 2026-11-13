@@ -1,4 +1,4 @@
-import { getAllPosts } from "@/lib/blog/rss";
+import { getBlogFeed } from "@/lib/blog/rss";
 import BlogArticle from "@/components/index/blog-article";
 import { Plus } from "lucide-react";
 import Link from "next/link";
@@ -6,7 +6,9 @@ import SectionHeading from "./section-heading";
 import { PrimaryButton } from "../buttons/PrimaryButton";
 
 export default async function Blog() {
-  const posts = await getAllPosts();
+  const { posts } = await getBlogFeed();
+  // 取得失敗時や記事0件のときは、トップページのブログ欄ごと表示しない
+  if (posts.length === 0) return null;
 
   return (
     <>

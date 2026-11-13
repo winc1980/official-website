@@ -146,8 +146,10 @@ pnpm start
 - **ファイル**: [lib/blog/](lib/blog/)
 - トップページに最新3件、`/blog`にRSS内の記事を公開日の降順で表示
 - 記事をクリックするとnoteの記事ページへ移動
-- RSS取得結果は5分間キャッシュ。表示件数はnoteがRSSで配信する範囲に限定
-- GitHub Actionsでは同名のリポジトリシークレット`NOTE_MAGAZINE_RSS_URL`を設定
+- RSS取得結果は5分間キャッシュ（ISR）。表示件数はnoteがRSSで配信する範囲に限定
+- 本番（Netlify）では環境変数`NOTE_MAGAZINE_RSS_URL`を設定
+- `NOTE_MAGAZINE_RSS_URL`が未設定・不正な場合はビルドエラーになる
+- noteの障害などでRSSを取得できない場合はビルドを止めず、`/blog`に「記事を取得できませんでした」とnoteへのリンクを表示し、トップページのブログ欄は非表示にする。5分後の再取得で自動的に復帰する
 
 ### Instagram 連携
 

@@ -1,6 +1,6 @@
 import PageHeader from "@/components/page-header";
 import PostCard from "@/components/blog/PostCard";
-import { getAllPosts } from "@/lib/blog/rss";
+import { getBlogFeed } from "@/lib/blog/rss";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const posts = await getAllPosts();
+  const { posts, failed, magazineUrl } = await getBlogFeed();
 
   return (
     <main className="flex flex-col items-center">
@@ -26,10 +26,22 @@ export default async function BlogPage() {
               {posts.length > 0 ? (
                 posts.map((post) => <PostCard key={post.id} post={post} />)
               ) : (
-                <div className="flex items-center justify-center py-20">
+                <div className="flex flex-col items-center justify-center gap-4 py-20">
                   <p className="text-muted-foreground">
-                    まだ記事がありません。
+                    {failed
+                      ? "記事を取得できませんでした。"
+                      : "まだ記事がありません。"}
                   </p>
+                  {failed && (
+                    <a
+                      href={magazineUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm underline underline-offset-4 hover:text-muted-foreground transition-colors"
+                    >
+                      noteで記事を見る
+                    </a>
+                  )}
                 </div>
               )}
             </div>

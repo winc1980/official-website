@@ -88,7 +88,6 @@ jobs:
         env:
           NEXT_PUBLIC_CMS_DOMAIN: ${{ secrets.NEXT_PUBLIC_CMS_DOMAIN }}
           NEXT_PUBLIC_CMS_API_KEY: ${{ secrets.NEXT_PUBLIC_CMS_API_KEY }}
-          NOTE_MAGAZINE_RSS_URL: ${{ secrets.NOTE_MAGAZINE_RSS_URL }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
