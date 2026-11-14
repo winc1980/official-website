@@ -4,6 +4,7 @@ import "./globals.css";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import LoadingOrBg from "@/components/layout/loading-or-bg";
+import ScrollToTop from "@/components/layout/scroll-to-top";
 
 const notoSansJp = Noto_Sans_JP({
   variable: "--font-noto-sans-jp",
@@ -86,6 +87,7 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${notoSansJp.variable} ${geistMono.variable} ${sans.variable} antialiased min-h-screen bg-gradient-orange-50 z-0 relative`}
       >
+        <ScrollToTop />
         <LoadingOrBg />
         <Header />
         {children}
